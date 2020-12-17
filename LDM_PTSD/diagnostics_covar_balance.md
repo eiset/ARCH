@@ -51,16 +51,6 @@ loaded packages
 
 </details>
 
-``` r
-dta <- list()
-dta$simple <- read_rds("data/full_data_set201104.rds")
-dta$intmed <- dta$simple %>% 
-  select(-sexFemaleXage)
-dta$complex <- dta$intmed %>% 
-  select(- whoXsexFemale, - whoXage)
-list_for_mi <- read_rds("data/list_for_mi201108.rds")
-```
-
 ### Functions used
 
 ``` r
