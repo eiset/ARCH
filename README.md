@@ -3,5 +3,7 @@ The study protocol is available here: https://bmjopen.bmj.com/content/10/5/e0344
 
 * LDM_PTSD: Long-distance migration and post-traumatic stress syndrome
 
-If in one of the "sub-folders" you see a .rm file, that is probably the one you want (its rendered so that figures and text aligne)
+If in one of the "sub-folders" you see a .rm file, this may very well be what you are after (its rendered so that figures and text aligne). I have tried to name the files logically.
+
+You are always welcome to get in contact with questions or comments
 
