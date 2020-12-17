@@ -28,7 +28,7 @@ Produce estimate for analyser
        		
         iii. From the 9 “samples”: choose the PS model and the set-point for trimming that obtains better balance (subjectively)
        
-    4. For the chosen complexity and trimming do as described in “illustration of the method” in “metode_MAR_MI_PS_200904”
+    4. For the chosen complexity and trimming do as described in “illustration of the method”
        
     5. Sensitivity analysis
         i. Leave outcome “as is” instead of multiple impute (i.e. as recommended by Little)
