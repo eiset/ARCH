@@ -1,0 +1,37 @@
+Produce estimate for analyser
+    • Crude, complete-case
+    • Weighted, complete-case
+    • Imputed 
+
+    1. The PS model
+        ◦ Balance is to be assessed from the three PS models below, each of which with three different trimming cut-off. That is balance will be assessed for a total of 9 models. See bullet 3 for details.
+        ◦ regressand: long distance migration (i.e. exposure in the substantial model of interest). In the following we will use “migration” to denote this
+        ◦ predictors (i.e. confounders and potential confounders (assoc. with outcome but not exposure in analysis of interest))
+            ▪ PS model 1: “simple” (total df spend: 8)
+                i. Age: continuous, restricted cubic spline w 3 knots (rcs3k) [2 params]
+                ii. Sex: dichotomous: male/female [1 param]
+                iii. Mental health: WHO-5 rcs3k [2 params]
+                iv. Violence, observed/experienced: dichotomous: yes/no [1 param]
+                v. SES in home country before migration: self-evaluated, categorical: “on average”/ “below average”/“above average” [2 params]
+            ▪ PS model 2: “intermediate” (in addition to model 1, total df spend: 9)
+                i. interaction of Sex and age [1 params]
+            ▪ PS model 3: “complex” (in addition to model 2, total df spend: 12)
+                i. interaction of Sex and WHO-5 [1 params]
+                i. interaction of Age and WHO-5 (rcs3k(who5 * age) [2 params]
+
+    2. The MI model: To give unbiased estimates the multiple imputation model must be correctly specified. Model-misspecification can be both according to the “true” mechanism in the population or if the MI model is not congenial with the substantive model of interest. Probably, the substantive model will be misspecified to some extent in most real world cases. In our study we choose the recently proposed method “substantial model compatible fully conditional specification” which builds on chained-equations and let the researcher specify the substantive model of interest. In doing so we propose to diminish the misspecification of the MI model. The "predictor-matrix" holds information on all prediction models and how each variable enter the prediction model as predictors and as response and variables to enter in the substantive model.
+
+           
+    3. Choose PS model and trimming set-point 
+        i. For each of the 3 PS models (“simple”, “intermediate” and “complex”) impute one complete data set
+        ii. compare balance on all variables in each imputed data set when trimming at percentiles: 0 & 100 (i.e. no trimming), 1 & 99 and 5 & 95 by plotting: Example from “cobalt” package vignette.
+       		
+        iii. From the 9 “samples”: choose the PS model and the set-point for trimming that obtains better balance (subjectively)
+       
+    4. For the chosen complexity and trimming do as described in “illustration of the method” in “metode_MAR_MI_PS_200904”
+       
+    5. Sensitivity analysis
+        i. Leave outcome “as is” instead of multiple impute (i.e. as recommended by Little)
+        ii. If any doubt in choosing the PS-model complexity and trimming set-point: try one or two of the other “best balance candidates”
+        iii. set different threshold of HTQ-score to indicate “PTSD”: the standard, used in the main analyses, is HTQ≥2.5. Try with ≥2.3 and ≥2.7.
+        iv. induse non-ignorable missingness mechanism by forcing missings to a reasonable value in one exposure group while keeping the imputed value for the other
