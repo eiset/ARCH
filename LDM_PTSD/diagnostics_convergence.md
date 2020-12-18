@@ -77,4 +77,12 @@ map(1:length(covars_in_subst_model),
 )
 ```
 
-<img src="diagnostics_convergence201125_files/figure-gfm/the plots-1.png" width="50%" /><img src="diagnostics_convergence201125_files/figure-gfm/the plots-2.png" width="50%" /><img src="diagnostics_convergence201125_files/figure-gfm/the plots-3.png" width="50%" /><img src="diagnostics_convergence201125_files/figure-gfm/the plots-4.png" width="50%" /><img src="diagnostics_convergence201125_files/figure-gfm/the plots-5.png" width="50%" /><img src="diagnostics_convergence201125_files/figure-gfm/the plots-6.png" width="50%" /><img src="diagnostics_convergence201125_files/figure-gfm/the plots-7.png" width="50%" /><img src="diagnostics_convergence201125_files/figure-gfm/the plots-8.png" width="50%" /><img src="diagnostics_convergence201125_files/figure-gfm/the plots-9.png" width="50%" />
+<img src="diagnostics_convergence_files/figure-gfm/the plots-1.png" width="50%" />
+<img src="diagnostics_convergence_files/figure-gfm/the plots-2.png" width="50%" />
+<img src="diagnostics_convergence_files/figure-gfm/the plots-3.png" width="50%" />
+<img src="diagnostics_convergence_files/figure-gfm/the plots-4.png" width="50%" />
+<img src="diagnostics_convergence_files/figure-gfm/the plots-5.png" width="50%" />
+<img src="diagnostics_convergence_files/figure-gfm/the plots-6.png" width="50%" />
+<img src="diagnostics_convergence_files/figure-gfm/the plots-7.png" width="50%" />
+<img src="diagnostics_convergence_files/figure-gfm/the plots-8.png" width="50%" />
+<img src="diagnostics_convergence_files/figure-gfm/the plots-9.png" width="50%" />
