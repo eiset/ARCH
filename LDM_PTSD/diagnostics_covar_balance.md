@@ -213,6 +213,6 @@ p <- map(c("simple", "intmed", "complex"), ~ BalancePlot(.x))
 GridArrangeSharedLegend(p[[1]], p[[2]], p[[3]])
 ```
 
-<img src="diagnostics_covar_files/figure-gfm/cont pred / categ responses-1.png" width="100%" />
+<img src="diagnostics_covar_balance_files/figure-gfm/cont pred / categ responses-1.png" width="100%" />
 <br> \*indicates variables for which the displayed value is the raw
 (unstandardized) difference in means.
