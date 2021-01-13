@@ -187,10 +187,9 @@ PlotContCont <- function(data_set, cont_response) {
   
 
 
-# For cat vs cat - måske kan loop laves om til pivot + bind_col som cont-cat ovenfor?
+# For cat vs cat (have not been able to implement without loop as the above functionals - suggestions are appreciated)
 # Plots
 
-#FOR THIS PLOT: POSSIBLE TO WRITE "Missing: n = XXXX" FOR EACH COLUMN AND ROW?
 PlotCatCat <- function(catcat_data, response) {
   resp <- rlang::sym(response)
   for (n in 1:ncol(catcat_data)) {
