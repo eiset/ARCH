@@ -20,7 +20,6 @@ Produce estimate for analyser
                 i. interaction of Age and WHO-5 (rcs3k(who5 * age) [2 params]
 
     2. The MI model: To give unbiased estimates the multiple imputation model must be correctly specified. Model-misspecification can be both according to the “true” mechanism in the population or if the MI model is not congenial with the substantive model of interest. Probably, the substantive model will be misspecified to some extent in most real world cases. In our study we choose the recently proposed method “substantial model compatible fully conditional specification” which builds on chained-equations and let the researcher specify the substantive model of interest. In doing so we propose to diminish the misspecification of the MI model. The "predictor-matrix" holds information on all prediction models and how each variable enter the prediction model as predictors and as response and variables to enter in the substantive model.
-
            
     3. Choose PS model and trimming set-point 
         i. For each of the 3 PS models (“simple”, “intermediate” and “complex”) impute one complete data set
