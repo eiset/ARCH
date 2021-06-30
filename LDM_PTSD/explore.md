@@ -250,12 +250,8 @@ dta <- dta %>%
 ```
 
 ## Plots: Continuous response vs continuous predictor
+NA values are plotted as (minimum value - MAD)<br/> Colour coding of number of individuals at each space:<br/> <img src="explore_files/figure-gfm/colour_coding_scale.jpg" width="50%" />
 
-### Colour coding of number of individuals at each space:
-  
-<img src="explore_files/figure-gfm/colour_coding_scale.jpg" width="50%" />
-
-### NA values are plotted as (minimum value - MAD)
 
 ``` r
 cont_vrbls <- dta[, purrr::map_lgl(dta, is.numeric)] %>%
@@ -272,7 +268,8 @@ map(cont_vrbls, function(x) PlotContCont(dta, x))
 highest\_educ, ses, smoking, expir\_violence<br/> NA values in
 continuous predictors are plotted as (minimum value - MAD)
 
-<img src="/home/ahe/Insync/a.halgreeneiset@gmail.com/Google Drive/projekt_manus_artikel/1_manus/ARCH.Mental.Health/colour_coding_scale.jpg" width="50%" style="display: block; margin: auto;" />
+Colour coding of number of individuals at each space:<br/>
+  <img src="explore_files/figure-gfm/colour_coding_scale.jpg" width="50%" />
 
 ``` r
 vars_to_x <- unlist(str_split("sex, marital_status, gov_of_orig, highest_educ, ses, smoking, expir_violence, children", pattern = ", "))
