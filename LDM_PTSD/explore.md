@@ -253,7 +253,7 @@ dta <- dta %>%
 
 NA values are plotted as (minimum value - MAD)
 
-<img src="/home/ahe/Insync/a.halgreeneiset@gmail.com/Google Drive/projekt_manus_artikel/1_manus/ARCH.Mental.Health/colour_coding_scale.jpg" width="50%" style="display: block; margin: auto;" />
+<img src="/explore_files/figure-gfm/colour_coding_scale.jpg" width="50%" style="display: block; margin: auto;" />
 
 ``` r
 cont_vrbls <- dta[, purrr::map_lgl(dta, is.numeric)] %>%
