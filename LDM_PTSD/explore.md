@@ -251,10 +251,11 @@ dta <- dta %>%
 
 ## Plots: Continuous response vs continuous predictor
 
-###Colour coding of number of individuals at each space:
+### Colour coding of number of individuals at each space:
+  
 <img src="explore_files/figure-gfm/colour_coding_scale.jpg" width="50%" />
 
-###NA values are plotted as (minimum value - MAD)
+### NA values are plotted as (minimum value - MAD)
 
 ``` r
 cont_vrbls <- dta[, purrr::map_lgl(dta, is.numeric)] %>%
