@@ -222,19 +222,6 @@ PlotCatCat <- function(catcat_data, response) {
   }
 }
 
-# NOT USED since mosaic plot with n in each gives same and more info:
-#Tables, OBS: muligvis bedre at bruge pakke "gt" i stedet for pander
-FunTableCat <- function(df_only_cat_vars) {
-  names_cat_vars <- colnames(df_only_cat_vars)
-  for (n in names_cat_vars) {
-    for (i in names_cat_vars) {
-      out <- table(df_only_cat_vars[, n],
-                   df_only_cat_vars[, i],
-                   useNA = "always")
-      cat(paste("Response:", n, "\n", "Predictor:", i, "\n", pander::pander(out), "\n"))
-    }
-  }
-}
 ```
 
 </details>
