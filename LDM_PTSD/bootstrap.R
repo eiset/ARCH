@@ -17,3 +17,6 @@ boot_out <- list_for_mi$BootInChunks(first_seed = 1,
                                      bs_replicates = 25,
                                      boot_cores = 12,
                                      map_cores = 12)
+
+# The function saves the chunks in the working directory. The chunks should then
+# be moved to an appropriate location e.g. the "data" folder
