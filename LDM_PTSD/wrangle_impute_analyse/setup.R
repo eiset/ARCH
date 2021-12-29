@@ -35,6 +35,16 @@ print(sapply(tmps$pckg, packageVersion))
 
 # Function to extract the data sets ---------------------------------------
 
+tmps$SetPath <- function(cntr_id) {
+  if (cntr_id == "dk") {
+    file.path("mock_data/raw/dk")
+  } else if (cntr_id == "leb") {
+    file.path("mock_data/raw/leb")
+  } else {
+    stop("Country ID is not recognised")
+  }
+}
+
 tmps$GetRawSubset <- function(country_id, df_subset, df_version) {
   files_subset <- paste0(df_subset, sep = "(.*)")
   if (!missing(df_version)) {
