@@ -28,19 +28,18 @@ CombineFromList <- function(list_to_combine) {
 
 # Retrieve the bootstrap chunks -------------------------------------------
 
+#set the path according to where the bootstrap chunks are stored (in step 2)
 files_list <- PathToFiles("data/boot_out")
 
 boot_collect <- purrr::map(files_list, readr::read_rds)
 boot_collect <- unlist(boot_collect, recursive = FALSE)
 
-# Some seeds may produce errors. Remove them
+# Some seeds may produce errors. Remove them e.g.
 boot_collect[["13"]] <- NULL
-boot_collect[["23"]] <- NULL
-boot_collect[["26"]] <- NULL
 
 # Merge the chunks (one list for each)
 bs_data_final <- CombineFromList(boot_collect)
 
-# readr::write_rds(bs_data_final, "data/bs_data_final201206.rds")
+# readr::write_rds(bs_data_final, "data/bs_data_final.rds")
 
 
