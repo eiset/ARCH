@@ -3,7 +3,7 @@
 # Title:    ARCH: PTSD, the analyses
 # Licence:  GNU GPLv3
 # --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
-source("R/setup.R")
+source("setup.R")
 
 # Complete-case: Crude estimate  --------------------------------------------
 psw_bs_dta <- readr::read_rds("data/bs_data_final.rds") #contains the crude data set
