@@ -99,7 +99,7 @@ CreateCombine <- function(country_id, df_subset, df_version, variables) {
   
   who5_score <- tmps$CalcPsycScore(full_data_set,
                                    "who5",
-                                   function(x) rowSums(x) * 4)
+                                   summary_score = function(x) rowSums(x) * 4)
   
   htq_score <- tmps$CalcPsycScore(full_data_set,
                                   "htq")
