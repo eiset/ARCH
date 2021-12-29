@@ -7,10 +7,12 @@
 source("setup.R")
 
 # Import data, join and tidy  --------------------------------
+# The data sets that contain relevant variables
 tmps$dta_sets <- c("demog", "anxi", "depres", "htq", "who5", "migr_hist",
-                   "blood", "swab", "health") #the data sets that contain the variables
+                   "blood", "swab", "health") 
+# The variables
 tmps$vrbl_to_extract <- c("age", "sex", "violence", "ses", "highest_edu",
-                          "cldrn", "smoking", "bp_sys$", "marital", "hgt$") #the variables that are needed
+                          "cldrn", "smoking", "bp_sys$", "marital", "hgt$")
 
 leb <- CreateCombine(country_id = "leb",
                      df_subset = tmps$dta_sets,
