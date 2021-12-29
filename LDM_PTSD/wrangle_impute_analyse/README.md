@@ -1,4 +1,4 @@
-# The R scripts nessessary to get the data into the right format and do all the steps as detailed in the analysis plan (see the front page)
+# The R scripts nessessary to get the data into the right format and do all the steps as detailed in the analysis plan
 
 
 
