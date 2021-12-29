@@ -86,7 +86,7 @@ tmps$SubsetVars <-
       dplyr::bind_cols(b)
   }
 
-tmps$CalcPsycScore <- function(dta_set, psyc_scale, summary_score){
+tmps$CalcPsycScore <- function(dta_set, psyc_scale, summary_score = function(x) rowMeans(x)){
   dta_set[stringr::str_subset(names(dta_set), psyc_scale)] %>%
     dplyr::bind_cols() %>%
     dplyr::select_if(is.numeric) %>%
@@ -102,16 +102,13 @@ CreateCombine <- function(country_id, df_subset, df_version, variables) {
                                    function(x) rowSums(x) * 4)
   
   htq_score <- tmps$CalcPsycScore(full_data_set,
-                                  "htq",
-                                  function(x) rowMeans(x))
+                                  "htq")
   
   hscl_depres_score <- tmps$CalcPsycScore(full_data_set,
-                                          "depr",
-                                          function(x) rowMeans(x))
+                                          "depr")
   
   hscl_anx_score <- tmps$CalcPsycScore(full_data_set,
-                                       "anx",
-                                       function(x) rowMeans(x))
+                                       "anx")
 
   covars <- tmps$SubsetVars(country_id, df_subset, df_version, variables)
   
