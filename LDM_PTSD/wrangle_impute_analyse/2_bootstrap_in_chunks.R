@@ -4,7 +4,7 @@
 # Licence:  GNU GPLv3
 # --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
-source("R/load_packages_and_reset_graphics.R")
+source("setup.R")
 
 dta <- readr::read_rds("data/full_data_set.rds")
 list_for_mi <- readr::read_rds("data/list_for_mi.rds")
