@@ -40,6 +40,6 @@ boot_collect[["18"]] <- NULL
 # Merge the chunks (one list for each)
 bs_data_final <- CombineFromList(boot_collect)
 
-# readr::write_rds(bs_data_final, "data/bs_data_final.rds")
+# readr::write_rds(bs_data_final, "mock_data/bs_data_final.rds")
 
 
