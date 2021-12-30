@@ -103,20 +103,12 @@ CreateCombine <- function(country_id, df_subset, df_version, variables) {
   
   htq_score <- tmps$CalcPsycScore(full_data_set,
                                   "htq")
-  
-  hscl_depres_score <- tmps$CalcPsycScore(full_data_set,
-                                          "depr")
-  
-  hscl_anx_score <- tmps$CalcPsycScore(full_data_set,
-                                       "anx")
 
   covars <- tmps$SubsetVars(country_id, df_subset, df_version, variables)
   
   dplyr::bind_cols(covars,
                    who5_score = who5_score,
-                   htq_score = htq_score,
-                   hscl_anx_score = hscl_anx_score,
-                   hscl_depres_score = hscl_depres_score)
+                   htq_score = htq_score)
 }
 
 
