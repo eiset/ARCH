@@ -6,7 +6,7 @@
 source("setup.R")
 
 # Complete-case: Crude estimate  --------------------------------------------
-psw_bs_dta <- readr::read_rds("data/bs_data_final.rds") #contains the crude data set
+psw_bs_dta <- readr::read_rds("mock_data/bs_data_final.rds") #contains the crude data set
 dta_unimpd <- psw_bs_dta$data
 
 PointEstCrude <- function(data_set, indices) {
@@ -38,8 +38,8 @@ boot.ci(boot_out_cc_crude)
 
 
 # Complete-case: Weighted estimate ------------------------------------------------------
-psw_bs_dta <- readr::read_rds("data/bs_data_final.rds") #contains the crude data set
-list_for_mi <- readr::read_rds("data/list_for_mi.rds")
+psw_bs_dta <- readr::read_rds("mock_data/bs_data_final.rds") #contains the crude data set
+list_for_mi <- readr::read_rds("mockdata/list_for_mi.rds")
 
 dta_unimpd <- psw_bs_dta$data
 
