@@ -36,7 +36,9 @@ joind_dta <- bind_rows(leb, dk) %>%
                 smok = factor(smoking, ordered = FALSE),
                 age_log = log(age),
                 who_sqrt = sqrt(who5_score),
-                bp_log = log(bp)) %>%
+                bp_log = log(bp),
+                mari = factor(marital_status, ordered = FALSE) %>%
+                  forcats::fct_collapse("Other" = c("Single", "Widowed", "Other"))) %>%
   dplyr::rename(who = who5_score,
                 viol = violence,
                 ptsd = htq_score) %>%
@@ -75,7 +77,7 @@ colnames(joind_dta) <- stringr::str_replace(colnames(joind_dta), "[[:digit:]]", 
 
 # Get predictor matrix and MI method-string --------------------------------------------------------
 # Link to predictor matrix (with variable type info)
-tmps$lnk <- "mi_matrix.csv"
+tmps$lnk <- "mock_data/mi_matrix.csv"
 tmps$pred_mtx_and_type <- readr::read_csv(tmps$lnk, col_types = cols())
 
 # Define variables to be passively imputed
