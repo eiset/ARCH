@@ -22,12 +22,12 @@ dk <- CreateCombine("dk",
                     df_subset = tmps$dta_sets,
                     df_version = "1",
                     variables = tmps$vrbl_to_extract) %>%
-  mutate(migr = 1,
-         hgt = as.numeric(hgt))
+  mutate(migr = 1)
 
 # In smcfcs package all categorical variables must be factor type
 joind_dta <- bind_rows(leb, dk) %>%
-  dplyr::mutate(bp = if_else(bp_sys == 333, NA_real_, bp_sys),
+  dplyr::mutate(bp = as.integer(bp_sys) %>% 
+                  if_else(bp_sys == 333, NA_integer_, .),
                 ses = factor(ses, ordered = TRUE) %>%
                   forcats::fct_collapse("Above average or refuse answer" =
                                           c("Do not know/do not wish to answer",
@@ -40,7 +40,7 @@ joind_dta <- bind_rows(leb, dk) %>%
   dplyr::rename(who = who5_score,
                 viol = expir_violence,
                 ptsd = htq_score) %>%
-  dplyr::select(-c(rec_id, _of_no_interst))
+  dplyr::select(-c(rec_id, of_no_interst))
 
 rm(dk, leb)
 
