@@ -27,22 +27,23 @@ dk <- CreateCombine("dk",
 
 # In smcfcs package all categorical variables must be factor type
 joind_dta <- bind_rows(leb, dk) %>%
-  dplyr::mutate(bp = as.integer(bp_sys) %>% 
+  dplyr::mutate(sex = factor(sex, ordered = FALSE),
+                bp = as.integer(bp_sys) %>% 
                   if_else(bp_sys == 333, NA_integer_, .),
                 ses = factor(ses, ordered = TRUE) %>%
                   forcats::fct_collapse("Above average or refuse answer" =
                                           c("Do not know/do not wish to answer",
                                             "Above average")),
                 smok = factor(smoking, ordered = FALSE),
+                viol = factor(violence, ordered = FALSE),
                 age_log = log(age),
                 who_sqrt = sqrt(who5_score),
                 bp_log = log(bp),
                 mari = factor(marital_status, ordered = FALSE) %>%
                   forcats::fct_collapse("Other" = c("Single", "Widowed", "Other"))) %>%
   dplyr::rename(who = who5_score,
-                viol = violence,
                 ptsd = htq_score) %>%
-  dplyr::select(!matches("rec_id|of_no_interst$"))
+  dplyr::select(!matches("violence|rec_id|of_no_interst$"))
 
 rm(dk, leb)
 
@@ -106,5 +107,5 @@ joind_dta <- joind_dta %>%
 # smcfcs evaluates ":" in column name as function so throws error. Replace with X
 colnames(joind_dta) <- stringr::str_replace(colnames(joind_dta), ":", "X")
 
-#write_rds(joind_dta, "full_data_set.rds")
-#write_rds(list_for_mi, "list_for_mi.rds")
+#write_rds(joind_dta, "mock_data/full_data_set.rds")
+#write_rds(list_for_mi, "mock_data/list_for_mi.rds")

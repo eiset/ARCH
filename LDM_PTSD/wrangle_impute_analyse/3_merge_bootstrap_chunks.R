@@ -29,13 +29,13 @@ CombineFromList <- function(list_to_combine) {
 # Retrieve the bootstrap chunks -------------------------------------------
 
 #set the path according to where the bootstrap chunks are stored (in step 2)
-files_list <- PathToFiles("data/boot_out")
+files_list <- PathToFiles("mock_data/boot_out")
 
 boot_collect <- purrr::map(files_list, readr::read_rds)
 boot_collect <- unlist(boot_collect, recursive = FALSE)
 
 # Some seeds may produce errors. Remove them e.g.
-boot_collect[["13"]] <- NULL
+boot_collect[["18"]] <- NULL
 
 # Merge the chunks (one list for each)
 bs_data_final <- CombineFromList(boot_collect)
