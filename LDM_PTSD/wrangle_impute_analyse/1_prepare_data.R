@@ -8,11 +8,9 @@ source("setup.R")
 
 # Import data, join and tidy  --------------------------------
 # The data sets that contain relevant variables
-tmps$dta_sets <- c("demog", "anxi", "depres", "htq", "who5", "migr_hist",
-                   "blood", "swab", "health") 
+tmps$dta_sets <- c("demog", "htq", "who5", "migr_hist", "health") 
 # The variables
-tmps$vrbl_to_extract <- c("age", "sex", "violence", "ses", "highest_edu",
-                          "cldrn", "smoking", "bp_sys$", "marital", "hgt$")
+tmps$vrbl_to_extract <- c("age", "sex", "violence", "ses", "bp_sys$")
 
 leb <- CreateCombine(country_id = "leb",
                      df_subset = tmps$dta_sets,
@@ -30,10 +28,6 @@ dk <- CreateCombine("dk",
 # In smcfcs package all categorical variables must be factor type
 joind_dta <- bind_rows(leb, dk) %>%
   dplyr::mutate(bp = if_else(bp_sys == 333, NA_real_, bp_sys),
-                child = factor(cldrn, ordered = TRUE) %>%
-                  forcats::fct_collapse("0-2" = c("0", "1", "2"),
-                                        "5+" = "5"),
-                edu = factor(highest_educ, ordered = TRUE),
                 ses = factor(ses, ordered = TRUE) %>%
                   forcats::fct_collapse("Above average or refuse answer" =
                                           c("Do not know/do not wish to answer",
@@ -41,17 +35,12 @@ joind_dta <- bind_rows(leb, dk) %>%
                 smok = factor(smoking, ordered = FALSE),
                 age_log = log(age),
                 who_sqrt = sqrt(who5_score),
-                anx_sqrt = sqrt(hscl_anx_score),
                 bp_log = log(bp),
-                hgt_log = log(hgt),
-                mari = factor(marital_status, ordered = FALSE) %>%
-                  forcats::fct_collapse("Other" = c("Single", "Widowed", "Other"))) %>%
+                hgt_log = log(hgt)) %>%
   dplyr::rename(who = who5_score,
                 viol = expir_violence,
-                ptsd = htq_score,
-                anx = hscl_anx_score) %>%
-  dplyr::select(-c(rec_id, cldrn, bp_sys, hscl_depres_score, smoking,
-                   highest_educ, marital_status))
+                ptsd = htq_score) %>%
+  dplyr::select(-c(rec_id, _of_no_interst))
 
 rm(dk, leb)
 
@@ -67,9 +56,7 @@ joind_dta <- joind_dta %>%
 tmps$vrbls_to_spline <- c("age",
                           "who",
                           "ptsd",
-                          "anx",
-                          "bp",
-                          "hgt")
+                          "bp")
 
 list_for_mi$knt_pos <- purrr::map(
   1:length(tmps$vrbls_to_spline),
@@ -100,12 +87,8 @@ tmps$pas_vars <- tibble::tibble(age = "exp(age_log)",
                                 "who:sexFemale" = "who * as.numeric(sex == 'Female')",
                                 "who:age" = "who * age",
                                 ptsd_sb = "list_for_mi$ComputeSplineBasis(ptsd, list_for_mi[['knt_pos']][['ptsd']])[[1]]",
-                                anx = "anx ^2",
-                                anx_sb = "list_for_mi$ComputeSplineBasis(anx, list_for_mi[['knt_pos']][['anx']])[[1]]",
                                 bp = "exp(bp_log)",
-                                bp_sb = "list_for_mi$ComputeSplineBasis(bp, list_for_mi[['knt_pos']][['bp']])[[1]]",
-                                hgt = "exp(hgt_log)",
-                                hgt_sb ="list_for_mi$ComputeSplineBasis(hgt, list_for_mi[['knt_pos']][['hgt']])[[1]]"
+                                bp_sb = "list_for_mi$ComputeSplineBasis(bp, list_for_mi[['knt_pos']][['bp']])[[1]]"
 ) %>%
   tidyr::pivot_longer(everything())
 
