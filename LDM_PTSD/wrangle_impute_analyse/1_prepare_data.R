@@ -10,7 +10,7 @@ source("setup.R")
 # The data sets that contain relevant variables
 tmps$dta_sets <- c("demog", "htq", "who5", "migr_hist", "health") 
 # The variables
-tmps$vrbl_to_extract <- c("age", "sex", "violence", "ses", "bp_sys$")
+tmps$vrbl_to_extract <- c("age", "sex", "violence", "ses", "smoking", "bp_sys$")
 
 leb <- CreateCombine(country_id = "leb",
                      df_subset = tmps$dta_sets,
@@ -35,12 +35,11 @@ joind_dta <- bind_rows(leb, dk) %>%
                 smok = factor(smoking, ordered = FALSE),
                 age_log = log(age),
                 who_sqrt = sqrt(who5_score),
-                bp_log = log(bp),
-                hgt_log = log(hgt)) %>%
+                bp_log = log(bp)) %>%
   dplyr::rename(who = who5_score,
-                viol = expir_violence,
+                viol = violence,
                 ptsd = htq_score) %>%
-  dplyr::select(-c(rec_id, of_no_interst))
+  dplyr::select(!matches("rec_id|of_no_interst$"))
 
 rm(dk, leb)
 
