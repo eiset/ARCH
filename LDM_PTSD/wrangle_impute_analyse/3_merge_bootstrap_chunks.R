@@ -35,7 +35,8 @@ boot_collect <- purrr::map(files_list, readr::read_rds)
 boot_collect <- unlist(boot_collect, recursive = FALSE)
 
 # Some seeds may produce errors. Remove them e.g.
-boot_collect[["18"]] <- NULL
+boot_collect[["13"]] <- NULL
+boot_collect[["17"]] <- NULL
 
 # Merge the chunks (one list for each)
 bs_data_final <- CombineFromList(boot_collect)

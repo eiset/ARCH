@@ -18,8 +18,8 @@ list_for_mi <- readr::read_rds("mock_data/list_for_mi.rds")
 # instances the multiple imputation will fail and throw an error. Thus, the seeds
 # needed to run may be well above the ideal situation
 
-boot_out <- list_for_mi$BootInChunks(first_seed = 11,
-                                     last_seed = 20,
+boot_out <- list_for_mi$BootInChunks(first_seed = 1,
+                                     last_seed = 10,
                                      bs_replicates = 25,
                                      boot_cores = 5, #beware: the number of cores used are at some places in the code approximately multiplied 
                                      map_cores = 6)
