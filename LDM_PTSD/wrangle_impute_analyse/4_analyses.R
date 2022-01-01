@@ -39,7 +39,7 @@ boot.ci(boot_out_cc_crude)
 
 # Complete-case: Weighted estimate ------------------------------------------------------
 psw_bs_dta <- readr::read_rds("mock_data/bs_data_final.rds") #contains the crude data set
-list_for_mi <- readr::read_rds("mockdata/list_for_mi.rds")
+list_for_mi <- readr::read_rds("mock_data/list_for_mi.rds")
 
 dta_unimpd <- psw_bs_dta$data
 
@@ -74,7 +74,7 @@ boot::boot.ci(boot_out_cc_wgtd)
 # Multiply imputed weighted estimate ---------------------------------------------------
 
 library(boot)
-psw_bs_dta <- readr::read_rds("data/bs_data_final.rds")
+psw_bs_dta <- readr::read_rds("mock_data/bs_data_final.rds")
 
 #Point estimate
 psw_bs_dta$t0
